@@ -1,6 +1,4 @@
 # Celebrity Showdown
-
-# Tech Blog - WIP
 tbd
 
 ## Summary - WIP
@@ -41,3 +39,4 @@ Sarah Hollingsworth
 
 ## Acknowledgements -
 * Celebrity stats generated from the [Celebrity Bucks API](https://rapidapi.com/brianiswu/api/celebrity-bucks/details) 
+
