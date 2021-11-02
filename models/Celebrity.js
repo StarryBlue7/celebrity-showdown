@@ -21,9 +21,13 @@ Celebrity.init(
             allowNull: false, 
             unique: true
         },
-        strength: {
+        power: {
             type: DataTypes.INTEGER,
-            allowNull: false,           
+            allowNull: false,  
+            references: {
+                model: 'fame',
+                key: 'power',
+            }         
         },
         XP: {
             type: DataTypes.INTEGER,
