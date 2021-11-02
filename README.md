@@ -1,1 +1,3 @@
-# celebrity-showdown
+# Celebrity Showdown
+
+Coming soon!
