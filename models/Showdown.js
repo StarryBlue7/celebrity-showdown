@@ -16,17 +16,33 @@ Showdown.init(
             primaryKey: true,
             autoIncrement: true
         },
-        celebrityA_id:    {
-
+        celebrityA_id:  {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'celebrity',
+                key: 'id'
+            }
         },
         celebrityB_id:  {
-
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            references: {
+                model: 'celebrity',
+                key: 'id'
+            }
         },
-        winner: {
-
+        winner_is_A: { 
+            type: DataTypes.BOOLEAN,
+            allowNull: false, 
         },
+        date_created: {
+            type: DataTypes.DATE,
+            allowNull: false,
+            defaultValue: DataTypes.NOW,
+          },
     },
-  
+  {
     sequelize,
     timestamps: false,
     freezeTableName: true,
