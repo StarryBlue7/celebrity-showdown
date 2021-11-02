@@ -16,7 +16,7 @@ Showdown.init(
             primaryKey: true,
             autoIncrement: true
         },
-        celebrityA_id:  {
+        attacker_id:  {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
@@ -24,7 +24,7 @@ Showdown.init(
                 key: 'id'
             }
         },
-        celebrityB_id:  {
+        defender_id:  {
             type: DataTypes.INTEGER,
             allowNull: false,
             references: {
@@ -32,7 +32,7 @@ Showdown.init(
                 key: 'id'
             }
         },
-        winner_is_A: { 
+        attacker_win: { 
             type: DataTypes.BOOLEAN,
             allowNull: false, 
         },

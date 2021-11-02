@@ -21,17 +21,15 @@ Celebrity.init(
             allowNull: false, 
             unique: true
         },
-        // power: {
-        //     type: DataTypes.INTEGER,
-        //     allowNull: false,  
-        //     references: {
-        //         model: 'fame',
-        //         key: 'id',
-        //     }         
-        // },
+        level: {
+            type: DataTypes.INTEGER,
+            allowNull: false,  
+            defaultValue: 1      
+        },
         XP: {
             type: DataTypes.INTEGER,
-            allowNull: false,           
+            allowNull: false, 
+            defaultValue: 0          
         },
         user_id: {
             type: DataTypes.INTEGER,
