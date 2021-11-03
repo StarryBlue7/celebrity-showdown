@@ -1,8 +1,8 @@
 const sequelize = require('../config/connection');
-const { User, Fame, Showdown, Celebrity } = require('../models');
+const { User, Showdown, Celebrity } = require('../models');
 
 const userData = require('./userData.json');
-const { createPeople } = require('./fameData');
+const { createPeople } = require('../controllers/fameData');
 const showdownData = require('./showdownData.json');
 const celebrityData = require('./celebrityData.json');
 
