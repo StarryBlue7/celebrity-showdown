@@ -1,0 +1,13 @@
+@font-face {
+    font-family: street;
+    src: url(font/Act_Of_Rejection.ttf)
+}
+
+body {
+    background-color: rgb(34, 34, 37);
+    font-family: street;
+    letter-spacing: 2px;
+}
+
+
+
