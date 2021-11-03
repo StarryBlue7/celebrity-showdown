@@ -41,7 +41,7 @@ Celebrity.init(
                 model: 'fame',
                 key: 'id'
             }
-        },
+        }    
     },
     {
     sequelize,
