@@ -2,12 +2,9 @@ const sequelize = require('../config/connection');
 const { User, Fame, Showdown, Celebrity } = require('../models');
 
 const userData = require('./userData.json');
+const { createPeople } = require('./fame-seeds');
 const showdownData = require('./showdownData.json');
 const celebrityData = require('./celebrityData.json');
-// const celebrityData = require('./celebrityData.json');
-// const seedCelebrities = require('./celebrity-seeds');
-// const seedFame = require('./fame-seeds');
-
 
 const seedDatabase = async () => {
 
@@ -19,23 +16,25 @@ const seedDatabase = async () => {
         returning: true,
     });
 
-    // await seedFame();
-
+    // Seed fame data from celebritybucks api
+    const fame = await createPeople();
 
     // Seed celebrity data from json, before creating table records
+    var celebrities = [];
     for (const celebrity of celebrityData) {
-        await Celebrity.create({
+        const newCeleb = await Celebrity.create({
             ...celebrity,
-            user_id: user[Math.floor(Math.random() * user.length)].id,
+            user_id: users[Math.floor(Math.random() * users.length)].id,
             fame_id: fame[Math.floor(Math.random() * fame.length)].id
         });
-    }
+        celebrities.push(newCeleb);
+    } 
 
     for (const showdown of showdownData) {
         const randDefender = Math.floor(Math.random() * fame.length)
         await Showdown.create({
             ...showdown,
-            attacker_id: celebrity[Math.floor(Math.random() * celebrity.length)].id,
+            attacker_id: celebrities[Math.floor(Math.random() * celebrities.length)].id,
             defender_id: fame[randDefender].id,
             defender_name: fame[randDefender].name
             });

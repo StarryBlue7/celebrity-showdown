@@ -21,7 +21,7 @@ async function getPeople() {
             const data = celebData.concat(bonusData);
             return data;
         })
-        console.log(people);
+        // console.log(people);
         // return the array of celebrities
         return people;
     }

@@ -1,26 +1,32 @@
 const { Fame } = require('../models');
-var people = require('../api');
+var { getPeople } = require('../api');
+// const { placeholder } = require('sequelize/types/lib/operators');
 
 // function to map people array to expected values of fame array
-console.log(people.getPeople);
+// Get the people array from the axios api request
+async function createPeople() {
+    const people = await getPeople();
+    const celebrities = people.map(celebrity => {
+        const newCeleb = {
+            id: parseInt(celebrity.celebId),
+            name: celebrity.name,
+            power: celebrity.price,
+        }
+        return newCeleb;
+    });
+    console.log("celebrities below");
+    console.log(celebrities);
+    // return celebrities;
+    // const jsonString = JSON.stringify(celebrities);
+    // Fame.bulkCreate(jsonString, {
+    //     returning: true
+    // });
+    var fameData = [];
+    celebrities.forEach(async (celebrity) => {
+        const person = await Fame.create(celebrity)
+        fameData.push(person);
+    });
+    return fameData;
+}
 
-
-
-const seedFame = Fame.bulkCreate(fameData, {
-    returning: true
-});
-
-module.exports = seedFame;
-
-// File Structure
-// controllers
-//    api
-//       userRoutes.js
-//       showdownRoutes.js
-//    index.js
-// api
-//    something where the fetch call lives
-
-// notes
-// hit a function that fetches the data from celebritybucks
-// json object -> create a record for each object, then map the attributes of each object to expected values of the objects in the
+module.exports = { createPeople };
