@@ -2,6 +2,9 @@ const router = require('express').Router();
 const { Showdown } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+// api/showdown
+
+// Add new showdown results to table
 router.post('/', withAuth, async (req, res) => {
     try {
         const newShowdown = await Showdown.create({

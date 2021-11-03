@@ -2,6 +2,9 @@ const router = require('express').Router();
 const { Fame } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+// api/fame routes
+
+// Get fame data for one celebrity
 router.get('/:id', withAuth, async (req, res) => {
     try {
         const fameData = await Fame.findByPk(req.params.id);
