@@ -2,12 +2,19 @@ const router = require('express').Router();
 const { Fame } = require('../../models');
 const withAuth = require('../../utils/auth');
 
-router.get('/', withAuth, async (req, res) => {
-    res.json('Get fame data')
-});
-
 router.get('/:id', withAuth, async (req, res) => {
-    res.json('Get fame data by id')
+    try {
+        const fameData = await Fame.findByPk(req.params.id);
+
+        const fame = fameData.get({ plain: true });
+        
+        res.render('blog', {
+            ...fame,
+            logged_in: req.session.logged_in
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
 });
 
 module.exports = router;
