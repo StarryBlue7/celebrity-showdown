@@ -26,7 +26,7 @@ const sessionConfig = {
     })
 };
 
-app.use(session(sesssionConfig));
+app.use(session(sessionConfig));
 
 
 app.engine('handlebars', hbs.engine);
