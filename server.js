@@ -10,8 +10,8 @@ const routes = require('./controllers');
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-// const helpers = require('./utils/helpers');
-const hbs = exphbs.create() // swap to exphbs.create({ helpers }); to implement helpers
+const helpers = require('./utils/helpers');
+const hbs = exphbs.create({ helpers });
 
 const sessionConfig = {
     secret: 'Secret celebrity showdown secret',
@@ -27,7 +27,6 @@ const sessionConfig = {
 };
 
 app.use(session(sessionConfig));
-
 
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
