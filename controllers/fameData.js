@@ -1,5 +1,5 @@
 const { Fame } = require('../models');
-var { getPeople } = require('../controllers/api');
+var { getPeople } = require('./fame-api');
 
 // Map people array to expected values of fame array
 async function createPeople() {
@@ -27,5 +27,5 @@ async function createPeople() {
     return fameData;
 }
 
-// Export for use in seed.js
+// Export for use
 module.exports = { createPeople };
