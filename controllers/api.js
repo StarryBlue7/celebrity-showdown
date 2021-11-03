@@ -21,7 +21,7 @@ async function getPeople() {
             const data = celebData.concat(bonusData);
             return data;
         })
-        // console.log(people);
+
         // return the array of celebrities
         return people;
     }
@@ -33,4 +33,5 @@ async function getPeople() {
 // Initialize function
 getPeople();
 
+// Export module for use in seeds and production refresh calls
 module.exports = { getPeople };

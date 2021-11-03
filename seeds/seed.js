@@ -2,7 +2,7 @@ const sequelize = require('../config/connection');
 const { User, Fame, Showdown, Celebrity } = require('../models');
 
 const userData = require('./userData.json');
-const { createPeople } = require('./fame-seeds');
+const { createPeople } = require('./fameData');
 const showdownData = require('./showdownData.json');
 const celebrityData = require('./celebrityData.json');
 
@@ -18,9 +18,8 @@ const seedDatabase = async () => {
 
     // Seed fame data from celebritybucks api
     const fame = await createPeople();
-    //+ if fame.length is 0, stop
 
-    // Seed celebrity data from json, before creating table records
+    // Seed celebrity data from json + values from users array as needed
     var celebrities = [];
     for (const celebrity of celebrityData) {
         const newCeleb = 
@@ -32,6 +31,7 @@ const seedDatabase = async () => {
         celebrities.push(newCeleb);
     } 
 
+    // Seed showdown data from json + values from fame and celebrities arrays as needed
     for (const showdown of showdownData) {
         const randDefender = Math.floor(Math.random() * fame.length);
         console.log(randDefender, fame[randDefender].id, fame[randDefender].name);
