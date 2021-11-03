@@ -13,7 +13,7 @@ router.get('/', async (req, res) => {
 
         const showdowns = showdownData.map((showdown) => showdown.get({ plain: true }));
 
-        res.render('showdowns', { 
+        res.render('homepage', { 
             showdowns: showdowns, 
             logged_in: req.session.logged_in 
         });
