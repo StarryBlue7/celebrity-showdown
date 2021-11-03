@@ -9,5 +9,34 @@ body {
     letter-spacing: 2px;
 }
 
+main {
+    display: block;
+  }
+
+#login {
+    /* display: flex;
+    justify-content: center; */
+    margin-top: 15%;
+    /* align-items: flex-end; */
+}
+
+
+#signup {
+    /* display: flex;
+    justify-content: center; */
+    margin-top: 15%;
+    margin-right: 10%;
+    /* align-items: flex-end; */
+}
+
+#signup-header {
+    margin-left: 50%;
+}
+
+#login-header {
+    margin-left: 50%;
+}
+
+
 
 
