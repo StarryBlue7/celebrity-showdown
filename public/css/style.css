@@ -5,9 +5,50 @@
 
 body {
     background-color: rgb(34, 34, 37);
-    font-family: street;
-    letter-spacing: 2px;
 }
 
+h1 {
+    font-size: 300%;
+}
 
+header, h2, h3 {
+    font-family: street;
+    color: goldenrod;
+}
 
+.nav {
+    letter-spacing: 3px;    
+}
+
+.fighter {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 5px solid red;
+}
+
+.swords {
+    width: 125px;
+    height: 125px;
+}
+
+.victory {
+    color: rgb(0, 228, 68);
+}
+
+.defeat {
+    color: rgb(196, 0, 130);
+}
+
+@media screen and (max-width: 755px) {
+    .fighter {
+        width: 75px;
+        height: 75px;
+    }
+
+    .swords {
+        width: 60px;
+        height: 60px;
+    }
+}
