@@ -41,6 +41,27 @@ header, h2, h3 {
     color: rgb(196, 0, 130);
 }
 
+main {
+    display: block;
+  }
+
+#login {
+    margin-top: 15%;
+}
+
+#signup {
+    margin-top: 15%;
+    margin-right: 10%;
+}
+
+#signup-header {
+    margin-left: 50%;
+}
+
+#login-header {
+    margin-left: 50%;
+}
+
 @media screen and (max-width: 755px) {
     .fighter {
         width: 75px;
