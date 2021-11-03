@@ -18,11 +18,13 @@ const seedDatabase = async () => {
 
     // Seed fame data from celebritybucks api
     const fame = await createPeople();
+    //+ if fame.length is 0, stop
 
     // Seed celebrity data from json, before creating table records
     var celebrities = [];
     for (const celebrity of celebrityData) {
-        const newCeleb = await Celebrity.create({
+        const newCeleb = 
+        await Celebrity.create({
             ...celebrity,
             user_id: users[Math.floor(Math.random() * users.length)].id,
             fame_id: fame[Math.floor(Math.random() * fame.length)].id
@@ -31,7 +33,8 @@ const seedDatabase = async () => {
     } 
 
     for (const showdown of showdownData) {
-        const randDefender = Math.floor(Math.random() * fame.length)
+        const randDefender = Math.floor(Math.random() * fame.length);
+        console.log(randDefender, fame[randDefender].id, fame[randDefender].name);
         await Showdown.create({
             ...showdown,
             attacker_id: celebrities[Math.floor(Math.random() * celebrities.length)].id,

@@ -16,16 +16,13 @@ async function createPeople() {
     });
     console.log("celebrities below");
     console.log(celebrities);
-    // return celebrities;
-    // const jsonString = JSON.stringify(celebrities);
-    // Fame.bulkCreate(jsonString, {
-    //     returning: true
-    // });
-    var fameData = [];
-    celebrities.forEach(async (celebrity) => {
-        const person = await Fame.create(celebrity)
-        fameData.push(person);
+    
+    var fameData = celebrities.map(async (celebrity) => {
+        return await Fame.create(celebrity)
     });
+    
+    fameData = await Promise.all(fameData);
+    console.log("Fame data creation", fameData);
     return fameData;
 }
 
