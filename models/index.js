@@ -38,3 +38,5 @@ Celebrity.hasMany(Showdown, {
     as: "defends",
     foreignKey: "defender_id",
   });
+
+module.exports = { User, Fame, Celebrity, Showdown };
