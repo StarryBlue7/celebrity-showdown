@@ -29,6 +29,11 @@ User.init(
                 isEmail: true
             }
         },
+        win_count: {
+            type: DataTypes.INTEGER,
+            allowNull: false,
+            defaultValue: 0
+        },
         password: {
             type: DataTypes.STRING,
             allowNull: false,
