@@ -1,21 +1,21 @@
 const router = require('express').Router();
 const sequelize = require('../config/connection');
-const { User, Celebrity, Showdown } = require('../models');
+const { User, Celebrity, Fame, Showdown } = require('../models');
 const withAuth = require('../utils/auth');
 
 router.get('/', async (req, res) => {
     try {
         const showdownData = await Showdown.findAll({
             include: [
-                { model: Celebrity }
+                { model: Celebrity },
             ]
         });
 
         const showdowns = showdownData.map((showdown) => showdown.get({ plain: true }));
 
+        // res.json(showdowns)
         res.render('homepage', { 
-            showdowns: showdowns, 
-            logged_in: req.session.logged_in 
+            showdowns: showdowns
         });
     } catch (err) {
         res.status(500).json(err);

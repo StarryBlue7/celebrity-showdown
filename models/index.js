@@ -20,12 +20,10 @@ Fame.hasMany(Celebrity, {
 });
 
 Showdown.belongsTo(Celebrity, {
-    as: "attacker",
     foreignKey: "attacker_id",
 });
 
 Celebrity.hasMany(Showdown, {
-    as: "attacks",
     foreignKey: "attacker_id",
 });
 
