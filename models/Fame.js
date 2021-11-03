@@ -1,12 +1,7 @@
 const { Model, DataTypes } = require('sequelize');
-const bcrypt = require('bcrypt');
 const sequelize = require('../config/connection');
 
-class Fame extends Model {
-  checkPassword(loginPw) {
-    return bcrypt.compareSync(loginPw, this.password);
-  }
-}
+class Fame extends Model {}
 
 Fame.init(
     {
@@ -15,23 +10,22 @@ Fame.init(
             allowNull: false,
             primaryKey: true,
         },
-        name:   {
+        name: {
             type: DataTypes.STRING,
             allowNull: false
         },
-        power:  {
+        power: {
             type: DataTypes.INTEGER,
             allowNull: false,
         },
     },
-
-  {
-    sequelize,
-    timestamps: false,
-    freezeTableName: true,
-    underscored: true,
-    modelName: 'showdown',
-  }
+    {
+        sequelize,
+        timestamps: false,
+        freezeTableName: true,
+        underscored: true,
+        modelName: 'fame',
+    }
 );
 
 module.exports = Fame;
