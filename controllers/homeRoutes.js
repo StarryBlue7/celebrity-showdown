@@ -7,7 +7,13 @@ router.get('/', async (req, res) => {
     try {
         const showdownData = await Showdown.findAll({
             include: [
-                { model: Celebrity },
+                { 
+                    model: Celebrity,
+                    include: [{ 
+                        model: User,
+                        attributes: { exclude: ['password', 'email'] }
+                    }],
+                },
             ],
             order: [
                 ['date_created', 'DESC']
@@ -16,10 +22,10 @@ router.get('/', async (req, res) => {
 
         const showdowns = showdownData.map((showdown) => showdown.get({ plain: true }));
 
-        // res.json(showdowns)
-        res.render('homepage', { 
-            showdowns: showdowns
-        });
+        res.json(showdowns)
+        // res.render('homepage', { 
+        //     showdowns: showdowns
+        // });
     } catch (err) {
         res.status(500).json(err);
     }
@@ -44,16 +50,30 @@ router.get('/leaderboard', async (req, res) => {
     }
 });
 
-// router.get('/user/:id', async (req, res) => {
-//     res.json('See user page by id');
-// });
+router.get('/create', withAuth, async (req, res) => {
+    try {
+        const fameData = await Fame.findAll({});
+
+        const allFame = fameData.map((data) => data.get({ plain: true }));
+
+        res.render('create', { 
+            fame: allFame, 
+            logged_in: req.session.logged_in 
+        });
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 router.get('/profile', withAuth, async (req, res) => {
     try {
         const userData = await User.findByPk(req.session.user_id, {
             attributes: { exclude: ['password'] },
             include: [
-                { model: Celebrity }
+                { 
+                    model: Celebrity,
+                    include: [{ model: Fame}]
+                }
             ]
         });
 
