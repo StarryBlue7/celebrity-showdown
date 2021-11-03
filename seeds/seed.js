@@ -32,11 +32,13 @@ const seedDatabase = async () => {
     }
 
     for (const showdown of showdownData) {
+        const randDefender = Math.floor(Math.random() * fame.length)
         await Showdown.create({
             ...showdown,
             attacker_id: celebrity[Math.floor(Math.random() * celebrity.length)].id,
-            defender_id: celebrity[Math.floor(Math.random() * celebrity.length)].id
-        });
+            defender_id: fame[randDefender].id,
+            defender_name: fame[randDefender].name
+            });
     }
 
     process.exit(0);
