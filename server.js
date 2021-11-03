@@ -2,6 +2,7 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const path = require('path');
+const {updatePeople} = require('./controllers/fameData')
 
 const sequelize = require('./config/connection');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
@@ -40,3 +41,9 @@ app.use(routes);
 sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log('Now listening'));
 });
+
+// Updates data in fame tables every 10 minutes
+setInterval(async function() {
+    await updatePeople()
+    console.log('Updated fame table')
+}, 600 * 1000);
