@@ -4,12 +4,12 @@
             <summary class="card-header bg-dark">
                 <h2 class="text-center">Latest Showdowns</h2>
             </summary>
-            {{#each showdown}}
+            {{#each showdowns}}
             <article class="card-body bg-secondary border-bottom border-top border-warning">
                 <div class="d-flex flex-row flex-fill justify-content-around align-items-center">
                     <div class="d-flex flex-column align-items-center">
-                        <h3 class="text-center">{{fame.name}}</h3>
-                        <img class="fighter mx-1" src="https://celebritybucks.com/images/celebs/full/{{fame_id}}.jpg" />
+                        <h3 class="text-center">{{celebrity.name}}</h3>
+                        <img class="fighter mx-1" src="https://celebritybucks.com/images/celebs/full/{{celebrity.fame_id}}.jpg" />
                         {{#if attacker_win}}
                         <h3 class="text-center victory">Victory</h3>
                         {{else}}

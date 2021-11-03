@@ -22,11 +22,13 @@ const seedDatabase = async () => {
     // Seed celebrity data from json + values from users array as needed
     var celebrities = [];
     for (const celebrity of celebrityData) {
+        const randFame = Math.floor(Math.random() * fame.length);
         const newCeleb = 
         await Celebrity.create({
             ...celebrity,
             user_id: users[Math.floor(Math.random() * users.length)].id,
-            fame_id: fame[Math.floor(Math.random() * fame.length)].id
+            fame_id: fame[randFame].id,
+            name: fame[randFame].name
         });
         celebrities.push(newCeleb);
     } 
