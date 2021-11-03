@@ -27,5 +27,29 @@ async function createPeople() {
     return fameData;
 }
 
-// Export for use
-module.exports = { createPeople };
+async function updatePeople() {
+    // Get the array of people from the CelebrityBucks api call
+    const people = await getPeople();
+    // Map the contents of the people array objects to the expected values of Fame objects
+    const celebrities = people.map(celebrity => {
+        const newCeleb = {
+            id: parseInt(celebrity.celebId),
+            name: celebrity.name,
+            power: celebrity.price,
+        }
+        return newCeleb;
+    });
+    // Updating fame table function
+    let fameData = await Fame.bulkCreate(celebrities, {
+        updateOnDuplicate: ["id"],
+        individualHooks: true,
+        returning: true,
+    })
+
+    // Return the fameData array only after information has been added to it (promise complete)
+    fameData = await Promise.all(fameData);
+    console.log("Fame data creation", fameData);
+}
+
+    // Export for use
+module.exports = { createPeople, updatePeople };
