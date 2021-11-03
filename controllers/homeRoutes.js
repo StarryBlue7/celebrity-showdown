@@ -8,6 +8,9 @@ router.get('/', async (req, res) => {
         const showdownData = await Showdown.findAll({
             include: [
                 { model: Celebrity },
+            ],
+            order: [
+                ['date_created', 'DESC']
             ]
         });
 

@@ -9,9 +9,14 @@ body {
 
 h1 {
     font-size: 300%;
+    text-shadow: 3px 3px red;
 }
 
-header, h2, h3 {
+h2 {
+    text-shadow: 2px 2px red;    
+}
+
+header, h2, h3, h4 {
     font-family: street;
     color: goldenrod;
 }
@@ -28,6 +33,10 @@ header, h2, h3 {
     border: 5px solid red;
 }
 
+h4 {
+    letter-spacing: 2px;
+}
+
 .swords {
     width: 125px;
     height: 125px;
@@ -39,6 +48,10 @@ header, h2, h3 {
 
 .defeat {
     color: rgb(196, 0, 130);
+}
+
+.fighter-name {
+    max-width: 200px;
 }
 
 main {
