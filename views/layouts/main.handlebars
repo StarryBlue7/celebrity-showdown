@@ -17,21 +17,31 @@
             <div class="col-6 pt-2">
                 <div class="row">
                     <div class="col-3">
-                        <a href="/" class="text-warning navigation-link">Home</a>
+                        <h3>
+                            <a href="/" class="text-warning navigation-link">Home</a>
+                        </h3>
                     </div>
-                    {{#if loggedIn}}
-                    <div class="col-3 sm-12">         
-                        <a href="/profile" class="text-warning navigation-link">Profile</a>
+                    {{#if logged_in}}
+                    <div class="col-3 sm-12">
+                        <h3>         
+                            <a href="/profile" class="text-warning navigation-link">Profile</a>
+                        </h3>
                     </div>
                     <div class="col-3">
-                        <a href="/showdowns" class="text-warning navigation-link">Showdown</a>
+                        <h3>
+                            <a href="/showdowns" class="text-warning navigation-link">Showdown</a>
+                        </h3>
                     </div>
                     <div class="col-3">
-                        <a href="api/users/logout" class="text-warning navigation-link">Logout</a>
+                        <h3>
+                            <a href="api/users/logout" class="text-warning navigation-link" id="logout">Logout</a>
+                        </h3>
                     </div>
                     {{else}}
                     <div class="col-3">
-                        <a href="/login" class="text-warning navigation-link">Login</a>
+                        <h3>
+                            <a href="/login" class="text-warning navigation-link">Login</a>
+                        </h3>
                     </div>
                     {{/if}}
                 </div>
