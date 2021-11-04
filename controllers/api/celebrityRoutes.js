@@ -5,11 +5,11 @@ const withAuth = require('../../utils/auth');
 // api/celebrities routes
 
 // Create new celebrity instance
-router.post('/', withAuth, async (req, res) => {
+router.post('/', /*withAuth,*/ async (req, res) => {
     try {
         const newCelebrity = await Celebrity.create({
             ...req.body,
-            user_id: req.session.user_id,
+            // user_id: req.session.user_id,
         });
 
         res.status(200).json(newCelebrity);
@@ -40,12 +40,12 @@ router.put('/:id', withAuth, async (req, res) => {
 });
 
 // Delete celebrity
-router.delete('/:id', withAuth, async (req, res) => {
+router.delete('/:id', /*withAuth,*/ async (req, res) => {
     try {
         const celebrityData = await Celebrity.destroy({
             where: {
                 id: req.params.id,
-                user_id: req.session.user_id,
+                // user_id: req.session.user_id,
             },
         });
 
