@@ -45,30 +45,24 @@ router.get('/leaderboard', async (req, res) => {
             limit: 10
         });
 
-        // Testing - Array of users from user table
-        console.log("user array from table", userData);
+        // // Testing - Array of users from user table
+        // console.log("user array from table", userData);
 
         const users = [];
         for (let i = 0; i < userData.length; i++) {
             const user = userData[i].get({ plain: true });
             if (i === 0) {
-                // 1st place user
+                // 1st place user objects
                 user.champ = true;
             } else if (i === 1 || i ===2 ) {
-                // 2nd & 3rd place users
-                user.champ = false;
+                // 2nd & 3rd place user objects
                 user.podium = true;
-            } else {
-                // all other users on leaderboard
-                user.champ = false;
-                user.podium = false;
-                user.leader = false;
             }
             users.push(user);
         }
 
-        // Testing - Users array after attribute added to each user object
-        console.log("after attributes added", users);
+        // // Testing - Users array after attribute added to each user object
+        // console.log("after attributes added", users);
 
         res.render('leaderboard', { 
             users: users, 
