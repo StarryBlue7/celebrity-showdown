@@ -31,8 +31,10 @@
           <img class="fighter mx-1 mb-2" src="https://celebritybucks.com/images/celebs/full/{{fame_id}}.jpg" alt="Image a celebrity in this user's roster"
             onerror="this.src='https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png'" />
           <h5 class="fighter-name text-center text-warning">Level: {{level}} </h5>
+          <h5 class="fighter-name text-center text-danger">Pwr: {{fame.power}} </h5>
           <h5 class="fighter-name text-center text-danger">XP: {{XP}} </h5>
-          <a href="" class="btn btn-danger mb-2 delete-celeb" data-celebid="{{id}}">Delete</a>
+          {{!-- Added power attributes --}}
+          <a href="" class="btn btn-danger mb-2 delete-celeb" data-celebid="{{id}}">Remove</a>
         </li>
         {{/each}}
       </ul>
