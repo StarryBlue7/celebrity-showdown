@@ -1,34 +1,44 @@
- <div class="row d-flex flex-row flex-fill justify-content-center mt-5">
-        <div id="profile-card" class="card bg-secondary" style="width: 20rem;">
-            <img src="./images/avatar4.png" class="card-img-top" alt="...">
-            <div class="card-body">
-              <h5 class="card-title text-center">{{username}}</h5>
-            </div>
-            <ul class="list-group list-group-flush">
-              <li class="text-center list-group-item bg-secondary">Win Count: {{win_count}}</li>
-            </ul> 
-          </div>   
-          
-          <div id="celebrity-card" class="card col-6 ml-4 bg-secondary">
-            <h2 class="card-header text-center">My Celebrities</h2>
-            <div class="card-body">
-                <ul class="d-flex flex-row flex-wrap justify-content-center list-group list-group-flush">
-                    {{#each celebrities}}
-                    <li class= "d-flex flex-column align-items-center">
-                        <h3 class="fighter-name text-center">{{name}}</h3>
-                        <img class="fighter mx-1" src="https://celebritybucks.com/images/celebs/full/{{fame_id}}.jpg" 
-                            onerror="this.src='https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png'"/>
-                        <h5 class="fighter-name text-center">Level: {{level}} </h5> 
-                        <h5 class="fighter-name text-center">XP: {{XP}} </h5> 
-                    </li>
-                    {{/each}}
-                  </ul>
-         
-            </div>
-          </div>  
-        </div>
-          <div class="mb-4 mt-4 text-center">
-            <a href="#" class="btn btn-danger">Create New Celebrity</a>
-            <a href="#" class="btn btn-danger">Showdown!</a>
-              </div>
-         
+<div class="row d-flex flex-row flex-fill justify-content-center mt-5">
+  <div>
+    <div id="profile-card" class="card bg-secondary align-items-center" style="width: 20rem;">
+      <img src="./images/profile-avatar.png" class="card-img-top ml-2 mr-2" alt="...">
+      <div class="card-body">
+       <h5 class="card-title text-center">{{username}}</h5>
+      </div>
+      <p>
+        <button id="logout" class="text-center btn btn-danger mb-2">Logout</button>
+      </p>
+      <ul class="list-group list-group-flush">
+        <li class="text-center list-group-item bg-secondary">Win Count: {{win_count}}</li>
+      </ul>
+    </div>
+    <div class="flex-fill">
+      <div class="mb-4 mt-4 text-center d-flex flex-row flex-wrap justify-content-center">
+        <a href="#" class="btn mr-2 btn-danger">Create New Celebrity</a>
+        <a href="#" class="btn btn-danger">Showdown!</a>
+      </div>
+    </div>
+  </div>
+
+
+  <div id="celebrity-card" class="card col-6 ml-4 bg-secondary">
+    <h2 class="card-header text-center">My Celebrities</h2>
+    <div class="card-body">
+      <ul class="d-flex flex-row flex-wrap justify-content-center list-group list-group-flush">
+        {{#each celebrities}}
+        <li class="profile-cards card d-flex flex-column align-items-center justify-content-end px-3 pt-2 bg-dark m-2">
+          <h3 class="fighter-name text-center">{{name}}</h3>
+          <img class="fighter mx-1 mb-2" src="https://celebritybucks.com/images/celebs/full/{{fame_id}}.jpg"
+            onerror="this.src='https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png'" />
+          <h5 class="fighter-name text-center text-warning">Level: {{level}} </h5>
+          <h5 class="fighter-name text-center text-danger">XP: {{XP}} </h5>
+          <a href="#" class="btn btn-danger mb-2">Delete</a>
+        </li>
+        {{/each}}
+      </ul>
+
+    </div>
+  </div>
+</div>
+
+<script src='js/logout.js'></script>
