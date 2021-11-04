@@ -57,7 +57,11 @@ router.get('/leaderboard', async (req, res) => {
 
 router.get('/create', withAuth, async (req, res) => {
     try {
-        const fameData = await Fame.findAll({});
+        const fameData = await Fame.findAll({
+            order: [
+                ['power', 'DESC']
+            ]
+        });
 
         const allFame = fameData.map((data) => data.get({ plain: true }));
 
