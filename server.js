@@ -42,7 +42,7 @@ sequelize.sync({ force: false }).then(() => {
     app.listen(PORT, () => console.log('Now listening'));
 });
 
-// Updates data in fame tables every 10 minutes
+// Updates data in fame tables every 30 minutes
 setInterval(async function() {
     await updatePeople()
     console.log('Updated fame table')
