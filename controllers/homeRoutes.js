@@ -38,7 +38,11 @@ router.get('/showdowns', async (req, res) => {
 
 router.get('/leaderboard', async (req, res) => {
     try {
-        const userData = await User.findAll({});
+        const userData = await User.findAll({
+            order: [
+                ['win_count', 'DESC']
+            ]
+        });
 
         const users = userData.map((user) => user.get({ plain: true }));
 
