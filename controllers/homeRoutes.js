@@ -60,13 +60,18 @@ router.get('/create', withAuth, async (req, res) => {
         const fameData = await Fame.findAll({
             order: [
                 ['power', 'DESC']
-            ]
+            ],
+            limit: 20
         });
 
-        const allFame = fameData.map((data) => data.get({ plain: true }));
+        const tenToTwentyFame = [];
+        for (let i = 10; i < 19; i++) {
+            tenToTwentyFame.push(fameData[i].get({ plain: true }));
+        }
+        // fameData.map((data) => data.get({ plain: true }));
 
         res.render('create', { 
-            fame: allFame, 
+            fame: tenToTwentyFame, 
             logged_in: req.session.logged_in 
         });
     } catch (err) {
