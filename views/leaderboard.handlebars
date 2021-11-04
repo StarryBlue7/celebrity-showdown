@@ -5,25 +5,23 @@
                 <h2 class="text-center my-auto pt-1 page-header">Leaderboard</h2>
             </summary>
             <article class="card-body bg-secondary border-bottom border-top border-warning">
-
                 <!-- Leaderboard user card -->
-                <!-- 1st place -->
                 {{#each users}}
-                <div class="d-flex flex-row flex-fill align-items-center mb-2">
+                <div class="d-flex flex-row flex-fill align-items-center mb-3">
                     <!-- Image -->
-                    <div class="d-flex flex-column align-items-center">
+                    <div class="col d-flex justify-content-center leaderboard-icon">
                         <image src="./images/leaderboard-champion.png" alt="Image of crown for each player on the leaderboard" />
                     </div>
 
                     <!-- Name column -->
-                    <div class="d-flex flex-column">
-                        <h2>{{user.username}}</h2>
+                    <div class="col d-flex justify-content-center">
+                        <h4>{{username}}</h4>
                     </div>
 
                     <!-- Wins column -->
-                    <div class="d-flex flex-row">
-                        <h2 class="mr-2 font-weight-bold">{{user.win_count}}</h2>
-                        <h2 class= "ml-2">Wins</h2>
+                    <div class="col d-flex justify-content-center">
+                        <h4 class="mr-2 font-weight-bold">{{win_count}}</h4>
+                        <h4 class= "ml-2">Wins</h4>
                     </div>
                 </div>
                 {{/each}}

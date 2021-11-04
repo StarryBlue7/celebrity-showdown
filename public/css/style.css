@@ -109,8 +109,15 @@ main {
 
 }
 
+/* Main header in each handlebar view*/
 .page-header {
     letter-spacing: 6px;
+}
+
+/* Leaderboard user entry icon */
+.leaderboard-icon {
+    width: 100px;
+    height: 100px;
 }
 
 @media screen and (max-width: 755px) {
@@ -122,6 +129,11 @@ main {
     .swords {
         width: 60px;
         height: 60px;
+    }
+
+    .leaderboard-icon {
+        width: 75px;
+        height: 75px;
     }
 }
 
