@@ -83,12 +83,12 @@ main {
 }
 
 
-#myProgress {
+.progress {
     width: 100%;
     background-color: grey;
 }
 
-#myBar {
+.lifeBar {
     width: 75%;
     height: 30px;
     background-color: green;
