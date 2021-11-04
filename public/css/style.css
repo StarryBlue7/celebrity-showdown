@@ -5,6 +5,7 @@
 
 body {
     background-color: rgb(34, 34, 37);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 h1 {
@@ -79,6 +80,37 @@ main {
 .profile-cards {
     width: 200px;
     
+}
+
+
+#myProgress {
+    width: 100%;
+    background-color: grey;
+}
+  
+#myBar {
+    width: 75%;
+    height: 30px;
+    background-color: green;
+}
+
+#showdown-level {
+    font-weight:400;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+}
+
+#showdown-btn {
+    font-size: x-large;
+    box-shadow: black;
+    padding-left: 20%;
+    padding-right: 20%;
+    border-radius: 10%;
+
+}
+
+#showdown-header {
+    letter-spacing: 6px;
 }
 
 @media screen and (max-width: 755px) {
