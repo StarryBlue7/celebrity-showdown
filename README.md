@@ -66,5 +66,5 @@ Required when when you first set up the project for local development or use OR 
 | - [LinkedIn](https://www.linkedin.com/in/gabriel-crosetti/)| - [LinkedIn](https://www.linkedin.com/in/vince-lee/) | - [LinkedIn](https://www.linkedin.com/in/sarahhollingsworth/)|
 
 ## Acknowledgements -
-* Celebrity names, stats, and images generated from the [Celebrity Bucks API](https://rapidapi.com/brianiswu/api/celebrity-bucks/details) 
-
+* Celebrity names, stats, and images generated from the [Celebrity Bucks API](https://rapidapi.com/brianiswu/api/celebrity-bucks/details)
+* Reset.css in public domain, found at [Meyer Web](http://meyerweb.com/eric/tools/css/reset/)
