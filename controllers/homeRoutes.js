@@ -72,10 +72,28 @@ router.get('/leaderboard', async (req, res) => {
         const userData = await User.findAll({
             order: [
                 ['win_count', 'DESC']
-            ]
+            ],
+            limit: 10
         });
 
-        const users = userData.map((user) => user.get({ plain: true }));
+        // // Testing - Array of users from user table
+        // console.log("user array from table", userData);
+
+        const users = [];
+        for (let i = 0; i < userData.length; i++) {
+            const user = userData[i].get({ plain: true });
+            if (i === 0) {
+                // 1st place user objects
+                user.champ = true;
+            } else if (i === 1 || i ===2 ) {
+                // 2nd & 3rd place user objects
+                user.podium = true;
+            }
+            users.push(user);
+        }
+
+        // // Testing - Users array after attribute added to each user object
+        // console.log("after attributes added", users);
 
         res.render('leaderboard', { 
             users: users, 
