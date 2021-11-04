@@ -5,6 +5,7 @@
 
 body {
     background-color: rgb(34, 34, 37);
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
 h1 {
@@ -57,7 +58,7 @@ h3, h4 {
 
 main {
     display: block;
-  }
+    }
 
 #login {
     margin-top: 15%;
@@ -81,6 +82,49 @@ main {
     
 }
 
+
+.progress {
+    width: 100%;
+    background-color: grey;
+}
+
+.lifeBar {
+    width: 75%;
+    height: 30px;
+    background-color: green;
+}
+
+#showdown-level {
+    font-weight:400;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: large;
+}
+
+#showdown-btn {
+    font-size: x-large;
+    box-shadow: black;
+    padding-left: 20%;
+    padding-right: 20%;
+    border-radius: 10%;
+
+}
+
+/* Main header in each handlebar view*/
+.page-header {
+    letter-spacing: 6px;
+}
+
+/* Leaderboard user entry icon */
+.leaderboard-icon {
+    width: 100px;
+    height: 100px;
+}
+
+/* Spacing for user cards in leaderboards */
+.leaderboard-attribute {
+    letter-spacing: 4px
+}
+
 @media screen and (max-width: 755px) {
     .fighter {
         width: 75px;
@@ -90,6 +134,11 @@ main {
     .swords {
         width: 60px;
         height: 60px;
+    }
+
+    .leaderboard-icon {
+        width: 75px;
+        height: 75px;
     }
 }
 

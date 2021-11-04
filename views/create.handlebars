@@ -5,13 +5,13 @@
                 <h2 class="text-center">Create a Celebrity</h2>
             </summary>
             <article class="card-body bg-secondary border-bottom border-top border-warning">
-                <div class="d-flex flex-row flex-fill flex-wrap justify-content-around align-items-center">
+                <div class="d-flex flex-row flex-fill flex-wrap justify-content-around align-items-stretch">
                     {{#each fame}}
-                    <div class="card d-flex flex-column align-items-center p-2 bg-dark border border-warning">
+                    <div class="card d-flex flex-column col-lg-3 col-md-5 col-sm-8 m-2 align-items-center justify-content-end p-3 bg-dark border border-warning">
                         <h3 class="text-center">{{name}}</h3>
                         <img class="fighter mx-1" src="https://celebritybucks.com/images/celebs/full/{{id}}.jpg"
                             onerror="this.src='https://cdn.pixabay.com/photo/2016/08/08/09/17/avatar-1577909_960_720.png'" />
-                        <h3 class="text-center">Pwr: {{power}}</h3>
+                        <h4 class="text-center mt-2">Pwr: {{power}}</h4>
                         <button class="create-btn btn btn-danger" data-id="{{id}}" data-name="{{name}}">Create</button>
                     </div>
                     {{/each}}                            

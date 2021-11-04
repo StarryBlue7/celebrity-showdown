@@ -1,0 +1,40 @@
+<div class="row d-flex justify-content-center align-items-center w-100 mt-5 mx-0">
+    <div class="col-lg-8 col-md-12 col-sm-12">
+        <section class="card flex-fill border-warning">
+            <summary class="card-header bg-dark">
+                <h2 class="text-center my-auto pt-1 page-header">Leaderboard</h2>
+            </summary>
+            <article class="card-body bg-secondary border-bottom border-top border-warning">
+                <!-- Leaderboard user card -->
+                {{#each users}}
+                <div class="d-flex flex-row flex-fill align-items-center mb-3 leaderboard-card">
+                    <!-- Image -->
+                    <div class="col d-flex justify-content-center leaderboard-icon">
+                        <!-- Icon depends place on leaderboard -->
+                        {{#if champ}}
+                        <image src="./images/leaderboard-champ-icon.png" alt="Image of crown for 1st place user on the leaderboard" />
+                        {{else if podium}}
+                        <image src="./images/leaderboard-podium-icon.png" alt="Image of crown for 2nd & 3rd place users on the leaderboard" />
+                        {{else}}
+                        <image src="./images/leaderboard-leader-icon.png" alt="Image of crown for each player on the leaderboard" />
+                        {{/if}}
+                    </div>
+
+                    <!-- Name column -->
+                    <div class="col d-flex justify-content-center">
+                        <h4 class="leaderboard-attribute">{{username}}</h4>
+                    </div>
+
+                    <!-- Wins column -->
+                    <div class="col d-flex justify-content-center">
+                        <h4 class="mr-2 font-weight-bold leaderboard-attribute">{{win_count}}</h4>
+                        <h4 class= "ml-2 leaderboard-attribute">Wins</h4>
+                    </div>
+                </div>
+                {{/each}}
+                <!-- end user card -->
+
+            </article>
+        </section>
+    </div>
+</div>
