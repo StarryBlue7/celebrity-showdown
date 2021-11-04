@@ -46,4 +46,4 @@ sequelize.sync({ force: false }).then(() => {
 setInterval(async function() {
     await updatePeople()
     console.log('Updated fame table')
-}, 600 * 1000);
+}, 1800 * 1000);
