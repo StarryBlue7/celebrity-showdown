@@ -56,8 +56,10 @@ router.get('/showdowns', async (req, res) => {
             }
         });
         const randomEnemy = enemyCelebs[Math.floor(Math.random()*enemyCelebs.length)];
+        const defaultCeleb = userCelebs[0];
 
         res.render('showdowns', { 
+            defaultCeleb,
             userCelebs,
             randomEnemy, 
             logged_in: req.session.logged_in 
