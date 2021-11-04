@@ -1,30 +1,28 @@
 <div class="row d-flex flex-row flex-fill justify-content-center mt-5">
+  <!-- User Profile card -->
   <div>
-    <div id="profile-card" class="card bg-secondary align-items-center" style="width: 20rem;">
-      <img src="./images/profile-icon-default.png" class="card-img-top ml-2 mr-2 profile-icon" alt="Image of a generic avatar">
+    <div id="profile-card" class="card text-center bg-secondary align-items-center" style="width: 15rem;">
+      <img src="./images/profile-icon-default.png" class="card-img-top profile-icon" alt="Image of a generic avatar">
       <div class="card-body">
         <h5 class="card-title text-center">{{username}}</h5>
+        <h6 class="card-title text-center">Wins: {{win_count}}</h6>
+        <button id="logout" class="text-center btn btn-secondary mb-2">Logout</button>
       </div>
-      <p>
-        <button id="logout" class="text-center btn btn-danger mb-2">Logout</button>
-      </p>
-      <ul class="list-group list-group-flush">
-        <li class="text-center list-group-item bg-secondary">Wins: {{win_count}}</li>
-      </ul>
     </div>
     <div class="flex-fill">
-      <div class="mb-4 mt-4 text-center d-flex flex-row flex-wrap justify-content-center">
-        <a href="/create" class="btn mr-2 btn-danger">Create New Celebrity</a>
-        <a href="/showdown" class="btn btn-danger">Showdown!</a>
+      <div class="mb-4 mt-4 text-center d-flex flex-column flex-wrap justify-content-center">
+        <a href="/create" class="btn btn-danger profile-button">Add a Celebrity to your </a>
+        <a href="/showdowns" class="btn btn-danger profile-button">Showdown!</a>
       </div>
     </div>
   </div>
 
-
+  <!-- Celebrity Roster container -->
   <div id="celebrity-card" class="card col-6 ml-4 bg-secondary">
-    <h2 class="card-header text-center">Celebrity Roster</h2>
+    <h2 class="card-header text-center my-auto leaderboard-attribute">Celebrity Roster</h2>
     <div class="card-body">
       <ul class="d-flex flex-row flex-wrap justify-content-center list-group list-group-flush">
+        <!-- Celebrity cards -->
         {{#each celebrities}}
         <li class="profile-cards card d-flex flex-column align-items-center justify-content-end px-3 pt-2 bg-dark m-2">
           <h3 class="fighter-name text-center">{{name}}</h3>
@@ -34,11 +32,12 @@
           <h5 class="fighter-name text-center text-danger">XP: {{XP}} </h5>
           <a href="" class="btn btn-danger mb-2 delete-celeb" data-celebid="{{id}}">Delete</a>
         </li>
+        <!-- end celebrity card -->
         {{/each}}
       </ul>
-
     </div>
   </div>
+
 </div>
 
 <script src='js/logout.js'></script>
