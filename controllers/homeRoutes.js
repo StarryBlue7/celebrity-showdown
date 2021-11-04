@@ -55,10 +55,11 @@ router.get('/showdowns', async (req, res) => {
                 enemyCelebs.push(celeb);
             }
         });
+        const randomEnemy = enemyCelebs[Math.floor(Math.random()*enemyCelebs.length)];
 
         res.render('showdowns', { 
             userCelebs,
-            enemyCelebs, 
+            randomEnemy, 
             logged_in: req.session.logged_in 
         });
     } catch (err) {
