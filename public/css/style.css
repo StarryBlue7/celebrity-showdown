@@ -13,7 +13,8 @@ h1 {
 }
 
 h2 {
-    text-shadow: 2px 2px red;    
+    text-shadow: 2px 2px red; 
+    letter-spacing: 3px;   
 }
 
 header, h2, h3, h4 {
@@ -33,7 +34,7 @@ header, h2, h3, h4 {
     border: 5px solid red;
 }
 
-h4 {
+h3, h4 {
     letter-spacing: 2px;
 }
 
@@ -75,6 +76,11 @@ main {
     margin-left: 50%;
 }
 
+.profile-cards {
+    width: 200px;
+    
+}
+
 @media screen and (max-width: 755px) {
     .fighter {
         width: 75px;
@@ -86,3 +92,4 @@ main {
         height: 60px;
     }
 }
+

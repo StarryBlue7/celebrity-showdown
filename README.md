@@ -7,7 +7,7 @@ Celebrity Showdown application is deployed to [Heroku here](https://powerful-bad
 tbd
 
 ### Database Schema
-![Image celebshowdown_db database, underlying table relationships](./public/img/celebshowdown_db_schema.png)
+![Image celebshowdown_db database, underlying table relationships](./img/celebshowdown_db_schema.png)
 
 ### Homepage
 
