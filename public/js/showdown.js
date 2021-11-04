@@ -39,10 +39,20 @@ class Fighter {
     }
 }
 
-function showdown(attackerCeleb, defenderCeleb) {
+function showdown() {
+    const showdownBtn = document.getElementById('showdown-btn');
+
     // Creates two unique characters using the "character" constructor
-    const attacker = new Fighter(attackerCeleb.name, attackerCeleb.power, attackerCeleb.level);
-    const defender = new Fighter(defenderCeleb.name, defenderCeleb.power, defenderCeleb.level);
+    const attacker = new Fighter(
+        showdownBtn.getAttribute('data-atk-name'), 
+        showdownBtn.getAttribute('data-atk-pwr'), 
+        showdownBtn.getAttribute('data-atk-lv')
+    );
+    const defender = new Fighter(
+        showdownBtn.getAttribute('data-def-name'), 
+        showdownBtn.getAttribute('data-def-pwr'), 
+        showdownBtn.getAttribute('data-def-lv')
+    );
 
     // This keeps track of whose turn it is
     let attackerTurn = true;
@@ -52,8 +62,6 @@ function showdown(attackerCeleb, defenderCeleb) {
 
     const attackerAvatar = document.getElementById('attacker');
     const defenderAvatar = document.getElementById('defender');
-
-
     const attackerHpBar = document.getElementById('attackerBar')
     const defenderHpBar = document.getElementById('defenderBar')
 
@@ -97,6 +105,7 @@ function setFighter(event) {
     const currentImg = document.getElementById('attacker')
     const currentLevel = document.getElementById('attacker-level');
     const currentPower = document.getElementById('attacker-power');
+    const showdownBtn = document.getElementById('showdown-btn')
 
     if (event.target.classList.contains('select-fighter')) {
         const selectedFighter = {
@@ -111,13 +120,17 @@ function setFighter(event) {
         currentImg.setAttribute('src', `https://celebritybucks.com/images/celebs/full/${selectedFighter.fame_id}.jpg`);
         currentLevel.innerText = 'Lv: ' + selectedFighter.level;
         currentPower.innerText = 'Pwr: ' + selectedFighter.power;
+
+        showdownBtn.setAttribute('data-atk-name', selectedFighter.name);
+        showdownBtn.setAttribute('data-atk-id', selectedFighter.id);
+        showdownBtn.setAttribute('data-atk-pwr', selectedFighter.power);
+        showdownBtn.setAttribute('data-atk-lv', selectedFighter.level);
     }   
 }
 
 document.getElementById('showdown-btn').addEventListener('click', function (event) {
-    event.preventDefault()
-    showdown({ name: "Dolly Parton", power: 200000, level: 6 }, { name: "Justin Bieber", power: 350000, level: 5 }
-    ), false
+    event.preventDefault();
+    showdown(), false
 });
 
 document.querySelectorAll('.select-fighter').forEach(button => {
