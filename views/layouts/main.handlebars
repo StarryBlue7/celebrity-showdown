@@ -10,39 +10,19 @@
 </head>
 <body>
     <header class="p-3">
-        <div class="row">
-            <div class="col-6 d-flex justify-content-start align-items-center">
+        <div class="row d-flex flex-row justify-content-between">
+            <div class="d-flex justify-content-start align-items-center">
                 <h1 class="text-warning d-inline pl-5">Celebrity Showdown</h1>
             </div>
-            <div class="col-6 pt-2">
+            <div class="pt-2">
                 <div class="row">
-                    <div class="col-3">
-                        <h3>
-                            <a href="/" class="text-warning navigation-link">Home</a>
-                        </h3>
-                    </div>
+                    <a href="/" class="text-warning navigation-link px-3"><h3>Home</h3></a>
+                    <a href="/leaderboard" class="text-warning navigation-link px-3"><h3>Leaderboard</h3></a>
                     {{#if logged_in}}
-                    <div class="col-3 sm-12">
-                        <h3>         
-                            <a href="/profile" class="text-warning navigation-link">Profile</a>
-                        </h3>
-                    </div>
-                    <div class="col-3">
-                        <h3>
-                            <a href="/showdowns" class="text-warning navigation-link">Showdown</a>
-                        </h3>
-                    </div>
-                    <div class="col-3">
-                        <h3>
-                            <a href="" class="text-warning navigation-link" id="logout">Logout</a>
-                        </h3>
-                    </div>
+                    <a href="/profile" class="text-warning navigation-link px-3"><h3>Profile</h3></a>
+                    <a href="/showdowns" class="text-warning navigation-link px-3"><h3>Showdown</h3></a>
                     {{else}}
-                    <div class="col-3">
-                        <h3>
-                            <a href="/login" class="text-warning navigation-link">Login</a>
-                        </h3>
-                    </div>
+                    <a href="/login" class="text-warning navigation-link px-3"><h3>Login</h3></a>
                     {{/if}}
                 </div>
             </div>
@@ -51,8 +31,5 @@
     <main>
         {{{body}}}
     </main>
-    {{#if logged_in}}
-    <script src='js/logout.js'></script>
-    {{/if}}
 <body>
 </html>
