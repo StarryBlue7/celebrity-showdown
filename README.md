@@ -2,6 +2,8 @@
 tbd
 
 ## Summary - WIP
+Celebrity Showdown application is deployed to [Heroku here](https://powerful-badlands-23075.herokuapp.com/).
+
 tbd
 
 ### Database Schema
@@ -32,7 +34,7 @@ Required when when you first set up the project for local development or use OR 
 
 7. Then, start the application with npm start. 
 
-8. Open the website in your local browser at http://localhost:3001 or application also available at on Heroku [here]().
+8. Open the website in local browser at http://localhost:3001
 
 ## Usage - WIP
 
@@ -56,17 +58,11 @@ Required when when you first set up the project for local development or use OR 
 * [GitHub](https://docs.github.com/en) - Hosts the code repository
 
 ## Authors
-Vince Lee
-* [Github](https://github.com/StarryBlue7)
-* [LinkedIn](https://www.linkedin.com/in/vince-lee/)
-
-Gabriel Crosetti
-* [Github](https://github.com/gabrielcrosetti)
-* [LinkedIn](https://www.linkedin.com/in/gabriel-crosetti/)
-
-Sarah Hollingsworth
-* [Github](https://github.com/sahhollingsworth)
-* [LinkedIn](https://www.linkedin.com/in/sarahhollingsworth/)
+|**Gabriel Crosetti** | **Vince Lee** | **Sarah Hollingsworth** |
+|-----------------|---------------|------------------|
+| - [Portfolio](https://gabrielcrosetti.github.io/my-portfolio/)| - [Portfolio](https://starryblue7.github.io/portfolio/)| - [Portfolio](https://sahhollingsworth.github.io/sarah-hollingsworth-portfolio_advanced-css/) |
+| - [Github](https://github.com/gabrielcrosetti)| - [Github](https://github.com/StarryBlue7) | - [Github](https://github.com/sahhollingsworth) |
+| - [LinkedIn](https://www.linkedin.com/in/gabriel-crosetti/)| - [LinkedIn](https://www.linkedin.com/in/vince-lee/) | - [LinkedIn](https://www.linkedin.com/in/sarahhollingsworth/)|
 
 ## Acknowledgements -
 * Celebrity names, stats, and images generated from the [Celebrity Bucks API](https://rapidapi.com/brianiswu/api/celebrity-bucks/details) 
