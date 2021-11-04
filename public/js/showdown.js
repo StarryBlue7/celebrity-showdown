@@ -61,21 +61,28 @@ function showdown(attackerCeleb, defenderCeleb) {
   
   attacker.printStats();
   defender.printStats();
+
+  const attackerAvatar = document.getElementById('attacker');
+  const defenderAvatar = document.getElementById('defender');
   
   const turnInterval = setInterval(() => {
     // If either character is not alive, end the game
+    defenderAvatar.classList.remove("animate__wobble")
+    attackerAvatar.classList.remove("animate__wobble")
     if (!attacker.isAlive() || !defender.isAlive()) {
       clearInterval(turnInterval);
       console.log('Game over!');
     } else if (attackerTurn) {
       attacker.attack(defender);
-      defender.printStats();
+      defenderAvatar.classList.toggle("animate__wobble")
     } else {
       defender.attack(attacker);
-      attacker.printStats();
+      attackerAvatar.classList.toggle("animate__wobble")
     }
   
     // Switch turns
     attackerTurn = !attackerTurn;
-  }, 2000);
+  }, 3000);
 }
+
+document.getElementById('showdown-btn').addEventListener('click', showdown({name: "Dolly Parton", power: 20000, level: 3}, {name: "Justin Bieber", power: 35000, level: 2}));
