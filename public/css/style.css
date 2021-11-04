@@ -120,6 +120,11 @@ main {
     height: 100px;
 }
 
+/* Spacing for user cards in leaderboards */
+.leaderboard-attribute {
+    letter-spacing: 4px
+}
+
 @media screen and (max-width: 755px) {
     .fighter {
         width: 75px;
