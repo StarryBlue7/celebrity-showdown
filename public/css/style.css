@@ -60,6 +60,13 @@ main {
     display: block;
     }
 
+/* Main header in each handlebar view*/
+.page-header {
+    letter-spacing: 6px;
+}
+
+/* Nav bar in main.handlebars */    
+
 #login {
     margin-top: 15%;
 }
@@ -77,11 +84,21 @@ main {
     margin-left: 50%;
 }
 
+/* Profile page */
+
+/* Celebrity Cards */
 .profile-cards {
     width: 200px;
     
 }
 
+/* Action buttons  */
+.profile-button {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+/* Showdown page */
 
 .progress {
     width: 100%;
@@ -109,12 +126,9 @@ main {
 
 }
 
-/* Main header in each handlebar view*/
-.page-header {
-    letter-spacing: 6px;
-}
+/* Leaderboard page */
 
-/* Leaderboard user entry icon */
+/* User card icon */
 .leaderboard-icon {
     width: 100px;
     height: 100px;
@@ -124,6 +138,8 @@ main {
 .leaderboard-attribute {
     letter-spacing: 4px
 }
+
+/* Media queries */
 
 @media screen and (max-width: 755px) {
     .fighter {
@@ -140,5 +156,9 @@ main {
         width: 75px;
         height: 75px;
     }
-}
 
+    .profile-icon {
+        width: 75px;
+        height: 75px;
+    }
+}
