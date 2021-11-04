@@ -24,7 +24,8 @@ router.get('/', async (req, res) => {
 
         // res.json(showdowns)
         res.render('homepage', { 
-            showdowns: showdowns
+            showdowns: showdowns,
+            logged_in: req.session.logged_in || false
         });
     } catch (err) {
         res.status(500).json(err);
