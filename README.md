@@ -54,6 +54,7 @@ Required when when you first set up the project for local development or use OR 
 * [Bootstrap](https://getbootstrap.com/docs/5.0/getting-started/introduction/) - Style and icon framework.
 * [CSS](https://devdocs.io/css/) - Custom application styling.
 * [Javascript](https://developer.mozilla.org/en-US/docs/Web/javascript) - Core app logic
+* [Animate CSS](https://animate.style/) - Used for animating elements in Showdown UI. 
 * [Git](https://git-scm.com/doc) - Version control system to track changes to source code
 * [GitHub](https://docs.github.com/en) - Hosts the code repository
 
