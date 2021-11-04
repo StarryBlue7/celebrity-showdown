@@ -2,6 +2,9 @@ const router = require('express').Router();
 const { Celebrity } = require('../../models');
 const withAuth = require('../../utils/auth');
 
+// api/celebrities routes
+
+// Create new celebrity instance
 router.post('/', withAuth, async (req, res) => {
     try {
         const newCelebrity = await Celebrity.create({
@@ -15,6 +18,7 @@ router.post('/', withAuth, async (req, res) => {
     }
 });
 
+// Update celebrity stats
 router.put('/:id', withAuth, async (req, res) => {
     try {
         const celebrityData = await Celebrity.update(req.body, {
@@ -35,6 +39,7 @@ router.put('/:id', withAuth, async (req, res) => {
     }
 });
 
+// Delete celebrity
 router.delete('/:id', withAuth, async (req, res) => {
     try {
         const celebrityData = await Celebrity.destroy({

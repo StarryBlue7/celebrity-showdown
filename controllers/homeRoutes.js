@@ -22,10 +22,10 @@ router.get('/', async (req, res) => {
 
         const showdowns = showdownData.map((showdown) => showdown.get({ plain: true }));
 
-        res.json(showdowns)
-        // res.render('homepage', { 
-        //     showdowns: showdowns
-        // });
+        // res.json(showdowns)
+        res.render('homepage', { 
+            showdowns: showdowns
+        });
     } catch (err) {
         res.status(500).json(err);
     }
