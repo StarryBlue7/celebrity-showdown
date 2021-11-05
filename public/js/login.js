@@ -8,7 +8,6 @@ const loginFormHandler = async (event) => {
     
     const password = document.querySelector('#password-login').value.trim();
 
-    console.log(password);
     // if email and password values are provided, then authenticate and create session
     if (email && password) {
         const response = await fetch ('/api/users/login', {
