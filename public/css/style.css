@@ -121,7 +121,13 @@ main {
     padding-left: 20%;
     padding-right: 20%;
     border-radius: 10%;
+}
 
+#showdown-btn:hover {
+    transition: 0.5s;
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
+    transform: scale(1.2);
 }
 
 /* Leaderboard page */
