@@ -114,3 +114,6 @@ Required when when you first set up the project for local development or use OR 
 ## Acknowledgements
 * Celebrity names, stats, and images generated from the [Celebrity Bucks API](https://rapidapi.com/brianiswu/api/celebrity-bucks/details)
 * Reset.css in public domain, found at [Meyer Web](http://meyerweb.com/eric/tools/css/reset/)
+
+## License
+* MIT License
