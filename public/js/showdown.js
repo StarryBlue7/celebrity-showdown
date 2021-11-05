@@ -109,25 +109,33 @@ function showdown() {
             console.log(`${attacker.name} wins!`);
         } else if (attackerTurn) {
             const attack = attacker.attack(defender);
+            
+            // Animations
             defenderAvatar.classList.toggle("animate__heartBeat");
             attackerAvatar.classList.toggle("animate__wobble")
             const defenderLife = Math.floor(defender.currentHp() / defenderMaxHp * 100 )
             defenderHpBar.style.width = defenderLife + "%";
             
+            // SFX
             const randSound = attack % 3;
             fightSound[randSound].play();
             fightSound[randSound].volume = 0.3;
+
             console.log(defenderLife)
         } else {
             const defend = defender.attack(attacker);
+
+            // Animations
             defenderAvatar.classList.toggle("animate__wobble");
             attackerAvatar.classList.toggle("animate__heartBeat")
             const attackerLife = Math.floor(attacker.currentHp() / attackerMaxHp * 100)
             attackerHpBar.style.width = attackerLife + "%";
             
+            // SFX
             const randSound = defend % 3;
             fightSound[randSound].play();
             fightSound[randSound].volume = 0.3;
+            
             console.log(attackerLife)
         }
         // Switch turns
@@ -173,7 +181,6 @@ async function showdownResults(attacker, defender, isWin) {
         defender_id: defender.id,
         attacker_win: isWin
     }
-    console.log(results)
     const newShowdown = await fetch('/api/showdown', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -188,7 +195,6 @@ async function showdownResults(attacker, defender, isWin) {
     
     // Update celebrity stats
     const newStats = calcNewStats(attacker, defender, isWin);
-    console.log(newStats)
     
     const celebUpdate = await fetch(('/api/celebrities/'+ attacker.id), {
         method: 'PUT',
@@ -210,25 +216,24 @@ async function showdownResults(attacker, defender, isWin) {
 function calcNewStats(attacker, defender, isWin) {
     let newLevel = attacker.level;
     let newXP = attacker.XP;
-    console.log(newXP);
+
     if (isWin) {
         newXP += Math.ceil(30 * (defender.level / attacker.level));
     } else {
         newXP += 5;
     }
-    console.log(newXP);
+    
     // Level up at 50XP
     while (newXP >= 50) {
         newXP -= 50;
         newLevel++;
     }
-    console.log(newXP);
     // Level cap at Lv. 10
     if (newLevel > 10) {
         newLevel = 10;
         newXP = 0;
     }
-    console.log(newXP);
+    
     return {newLevel, newXP}
 }
 
