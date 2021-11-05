@@ -48,14 +48,18 @@ function showdown() {
     // Create fighters from celeb data
     const attacker = new Fighter(
         showdownBtn.getAttribute('data-atk-name'), 
-        showdownBtn.getAttribute('data-atk-pwr'), 
-        showdownBtn.getAttribute('data-atk-lv')
+        parseInt(showdownBtn.getAttribute('data-atk-pwr')), 
+        parseInt(showdownBtn.getAttribute('data-atk-lv'))
     );
+    attacker['id'] = parseInt(showdownBtn.getAttribute('data-atk-id'));
+    attacker['XP'] = parseInt(showdownBtn.getAttribute('data-atk-xp'));
+
     const defender = new Fighter(
         showdownBtn.getAttribute('data-def-name'), 
-        showdownBtn.getAttribute('data-def-pwr'), 
-        showdownBtn.getAttribute('data-def-lv')
+        parseInt(showdownBtn.getAttribute('data-def-pwr')), 
+        parseInt(showdownBtn.getAttribute('data-def-lv'))
     );
+    defender['id'] = parseInt(showdownBtn.getAttribute('data-def-id'));
     
     // Hide start button, show swords
     const swords = document.getElementById('swords');
@@ -93,13 +97,13 @@ function showdown() {
         if (!attacker.isAlive()) {
             clearInterval(turnInterval);
             loseSound.play();
-
-            console.log(`${attacker.name} wins!`);
+            showdownResults(attacker, defender, false);
+            console.log(`${defender.name} wins!`);
         } else if (!defender.isAlive()) {
             clearInterval(turnInterval);
             winSound.play();
-
-            console.log(`${defender.name} wins!`);
+            showdownResults(attacker, defender, true);
+            console.log(`${attacker.name} wins!`);
         } else if (attackerTurn) {
             const attack = attacker.attack(defender);
             defenderAvatar.classList.toggle("animate__heartBeat");
@@ -150,6 +154,73 @@ function setFighter(event) {
         showdownBtn.setAttribute('data-atk-pwr', selectedFighter.power);
         showdownBtn.setAttribute('data-atk-lv', selectedFighter.level);
     }   
+}
+
+// Submit showdown results to db, update celebrity stats
+async function showdownResults(attacker, defender, isWin) {
+    const results = {
+        attacker_id: attacker.id,
+        defender_name: defender.name,
+        defender_id: defender.id,
+        attacker_win: isWin
+    }
+    console.log(results)
+    const newShowdown = await fetch('/api/showdown', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(results)
+    });
+
+    if (newShowdown.ok) {
+        console.log("Showdown results added successfully")
+    } else {
+        console.log("Couldn't add showdown results");
+    }
+    
+    // Update celebrity stats
+    const newStats = calcNewStats(attacker, defender, isWin);
+    console.log(newStats)
+    
+    const celebUpdate = await fetch(('/api/celebrities/'+ attacker.id), {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            level: newStats.newLevel,
+            XP: newStats.newXP
+        })
+    });
+
+    if (celebUpdate.ok) {
+        console.log("Celebrity updated successfully")
+    } else {
+        console.log("Couldn't update celebrity");
+    }
+}
+
+// Calculate new level and XP after showdown
+function calcNewStats(attacker, defender, isWin) {
+    let newLevel = attacker.level;
+    let newXP = attacker.XP;
+    console.log(newXP);
+    if (isWin) {
+        newXP += Math.ceil(30 * (defender.level / attacker.level));
+    } else {
+        newXP += 5;
+    }
+    console.log(newXP);
+    // Level up at 50XP
+    while (newXP >= 50) {
+        newXP -= 50;
+        newLevel++;
+    }
+    console.log(newXP);
+    // Level cap at Lv. 10
+    if (newLevel > 10) {
+        newLevel = 10;
+        newXP = 0;
+    }
+    console.log(newXP);
+    return {newLevel, newXP}
 }
 
 document.getElementById('showdown-btn').addEventListener('click', function (event) {
