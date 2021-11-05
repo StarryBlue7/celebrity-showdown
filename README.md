@@ -1,5 +1,5 @@
 # Celebrity Showdown
-This full-stack project is a website takes in real-time celebrity data and simulates a fight between two celebrities. Celebrity fight stats and attributes are constantly updated and calculated based on their current popularity and fame. The user is able to create an account, add celebrities to their roster, and gain XP from fights to level-up their celebrity cards. This project was made using Nodejs, Express. Javascript, MySQL, and more. 
+This full-stack project is a website that takes in real-time celebrity data and simulates a fight between two celebrities. Celebrity fight stats and attributes are constantly updated and calculated based on their current popularity and fame. The user is able to create an account, add celebrities to their roster, and gain XP from fights to level-up their celebrity cards. This project was made using Nodejs, Express. Javascript, MySQL, and more. 
 
 ## Summary
 Celebrity Showdown application is deployed to [Heroku here](https://powerful-badlands-23075.herokuapp.com/).
