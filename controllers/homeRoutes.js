@@ -34,7 +34,7 @@ router.get('/', async (req, res) => {
 });
 
 // Get showdown page with all celebrity data
-router.get('/showdowns', async (req, res) => {
+router.get('/showdowns', withAuth, async (req, res) => {
     try {
         const celebrityData = await Celebrity.findAll({
             include: [
