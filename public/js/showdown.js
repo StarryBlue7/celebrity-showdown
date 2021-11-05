@@ -224,9 +224,9 @@ async function showdownResults(attacker, defender, isWin) {
 
     if (celebUpdate.ok) {
         console.log("Celebrity updated successfully")
-        // setTimeout(() => {
-        //     document.location.reload();
-        // }, 5000)
+        setTimeout(() => {
+            document.location.reload();
+        }, 5000)
     } else {
         console.log("Couldn't update celebrity");
     }
