@@ -23,10 +23,6 @@ header, h2, h3, h4 {
     color: goldenrod;
 }
 
-.nav {
-    letter-spacing: 3px;    
-}
-
 .fighter {
     width: 150px;
     height: 150px;
@@ -83,6 +79,8 @@ main {
 #login-header {
     margin-left: 50%;
 }
+
+
 
 /* Profile page */
 
@@ -162,3 +160,15 @@ main {
         height: 75px;
     }
 }
+
+@media screen and (max-width: 1036px) {
+    /* #nav-contain {
+
+    } */
+}
+
+/* 
+nav-contain
+title-contain
+menu-contain
+*/
