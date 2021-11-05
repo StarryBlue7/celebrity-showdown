@@ -61,27 +61,6 @@ main {
     letter-spacing: 6px;
 }
 
-/* Nav bar in main.handlebars */    
-
-#login {
-    margin-top: 15%;
-}
-
-#signup {
-    margin-top: 15%;
-    margin-right: 10%;
-}
-
-#signup-header {
-    margin-left: 50%;
-}
-
-#login-header {
-    margin-left: 50%;
-}
-
-
-
 /* Profile page */
 
 /* Celebrity Cards */
@@ -166,15 +145,3 @@ main {
         height: 75px;
     }
 }
-
-@media screen and (max-width: 1036px) {
-    /* #nav-contain {
-
-    } */
-}
-
-/* 
-nav-contain
-title-contain
-menu-contain
-*/
