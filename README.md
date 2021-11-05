@@ -114,4 +114,4 @@ Required when when you first set up the project for local development or use OR 
 * Reset.css in public domain, found at [Meyer Web](http://meyerweb.com/eric/tools/css/reset/)
 
 ## License
-* https://vince-lee.mit-license.org/
+* MIT License (https://vince-lee.mit-license.org/)
