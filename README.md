@@ -71,8 +71,6 @@ Required when when you first set up the project for local development or use OR 
 
 8. Open the website in local browser at http://localhost:3001
 
-## Usage - WIP
-
 ## Future Development Ideas
 * Support User to User showdowns
 * Support users initiating a showdown directly with specified user
@@ -116,4 +114,4 @@ Required when when you first set up the project for local development or use OR 
 * Reset.css in public domain, found at [Meyer Web](http://meyerweb.com/eric/tools/css/reset/)
 
 ## License
-* MIT License
+* https://vince-lee.mit-license.org/
