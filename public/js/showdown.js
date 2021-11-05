@@ -5,6 +5,7 @@ class Fighter {
         this.power = power;
         this.hitPoints = level * 20 + 75;
     }
+
     calcDamage() {
         const damage = Math.ceil(.75 * Math.sqrt(this.level) * Math.log(this.power) * (Math.random() * (1.15 - .85 + 1) + .85));
         return damage
@@ -18,7 +19,7 @@ class Fighter {
     }
 
     currentHp() {
-        return this.hitPoints;
+        return this.hitPoints >= 0 ? this.hitPoints : 0;
     }
 
     // Method which determines whether or not a character's "hitpoints" are less then zero
@@ -36,13 +37,15 @@ class Fighter {
         const damage = this.calcDamage() 
         console.log(`${this.name} hit ${opponent.name} for ${damage}`);
         opponent.hitPoints -= damage;
+        return damage;
     }
 }
 
+// Showdown fight
 function showdown() {
     const showdownBtn = document.getElementById('showdown-btn');
 
-    // Creates two unique characters using the "character" constructor
+    // Create fighters from celeb data
     const attacker = new Fighter(
         showdownBtn.getAttribute('data-atk-name'), 
         showdownBtn.getAttribute('data-atk-pwr'), 
@@ -53,10 +56,21 @@ function showdown() {
         showdownBtn.getAttribute('data-def-pwr'), 
         showdownBtn.getAttribute('data-def-lv')
     );
+    
+    // Hide start button, show swords
+    const swords = document.getElementById('swords');
+    showdownBtn.style.display = 'none';
+    swords.style.display = 'block';
 
-    // This keeps track of whose turn it is
-    let attackerTurn = true;
-
+    let fightSound = [
+        new Audio("audio/sword1.wav"),
+        new Audio("audio/sword2.wav"),
+        new Audio("audio/sword3.wav")
+    ];
+    let startSound = new Audio("audio/start.wav");
+    let winSound = new Audio("audio/win.wav");
+    let loseSound = new Audio("audio/lose.wav");
+    
     attacker.printStats();
     defender.printStats();
 
@@ -67,31 +81,40 @@ function showdown() {
 
     const attackerMaxHp = attacker.currentHp()
     const defenderMaxHp = defender.currentHp()
+    
+    // Turn tracker
+    let attackerTurn = true;
+    startSound.play();
 
     const turnInterval = setInterval(() => {
         // If either character is not alive, end the game
-        defenderAvatar.classList.remove("animate__wobble")
-        attackerAvatar.classList.remove("animate__wobble")
-        if (!attacker.isAlive() || !defender.isAlive()) {
+        defenderAvatar.classList.remove("animate__wobble", "animate__heartBeat")
+        attackerAvatar.classList.remove("animate__wobble", "animate__heartBeat")
+        if (!attacker.isAlive()) {
             clearInterval(turnInterval);
-            console.log('Game over!');
+            loseSound.play();
+
+            console.log(`${attacker.name} wins!`);
+        } else if (!defender.isAlive()) {
+            clearInterval(turnInterval);
+            winSound.play();
+
+            console.log(`${defender.name} wins!`);
         } else if (attackerTurn) {
-            attacker.attack(defender);
-            defenderAvatar.classList.toggle("animate__wobble");
-            if (defender.currentHp() < 0) {
-                defender.hitPoints = 0;
-            }
+            const attack = attacker.attack(defender);
+            defenderAvatar.classList.toggle("animate__heartBeat");
+            attackerAvatar.classList.toggle("animate__wobble")
             const defenderLife = Math.floor(defender.currentHp() / defenderMaxHp * 100 )
             defenderHpBar.style.width = defenderLife + "%";
+            fightSound[attack % 3].play();
             console.log(defenderLife)
         } else {
-            defender.attack(attacker);
-            if (attacker.currentHp() < 0) {
-                attacker.hitPoints = 0;
-            }
-            attackerAvatar.classList.toggle("animate__wobble")
+            const defend = defender.attack(attacker);
+            defenderAvatar.classList.toggle("animate__wobble");
+            attackerAvatar.classList.toggle("animate__heartBeat")
             const attackerLife = Math.floor(attacker.currentHp() / attackerMaxHp * 100)
             attackerHpBar.style.width = attackerLife + "%";
+            fightSound[defend % 3].play();
             console.log(attackerLife)
         }
         // Switch turns
@@ -99,6 +122,7 @@ function showdown() {
     }, 1500);
 }
 
+// Change fighter based on roster cards
 function setFighter(event) {
     event.preventDefault();
     const currentName = document.getElementById('attacker-name');
