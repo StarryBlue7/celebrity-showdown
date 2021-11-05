@@ -82,7 +82,7 @@ Required when when you first set up the project for local development or use OR 
 * Ability to see other users' Profile pages
 * User acheivement framework to encourage user longevity
 
-## Built with
+## Technologies Used
 * [Node](https://nodejs.org/en/) - Asynchronous event-driven JavaScript runtime environment that executes JavaScript code outside a web browser
 * [NPM](https://www.npmjs.com/) - Node package manager, used in conjunction with JS and Inquirer to support application logic and Command Line interface.
   * [Axios](https://www.npmjs.com/package/axios) - Used for api request to CelebrityBucks
