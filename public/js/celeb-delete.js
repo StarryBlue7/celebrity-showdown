@@ -16,7 +16,6 @@ const deleteCelebHandler = async (event) => {
         document.location.replace('/profile');
     } else {
         console.log("Couldn't delete celebrity");
-        res.status(500).json(err);
     }
 };
 
