@@ -1,29 +1,7 @@
-// import fetch from "node-fetch";
-// const getCelebrityData = async () => {
-
-//     const response = await fetch ('/api/celebrity', {
-//         method: 'GET', 
-//     })
-//     const celebrities = response.json()
-//     console.log(celebrities)
-// }
-
-// getCelebrityData()
-
 class Fighter {
     constructor(name, power, level) {
-        // if (!name) {
-        //   throw new Error("You are missing the name.");
-        // }
-        // if (!strength) {
-        //   throw new Error("You are missing the strength.");
-        // }
-        // if (!hitPoints) {
-        //   throw new Error("You are missing the hitPoints.");
-        // }
         this.name = name;
         this.level = level;
-        // this.damage = Math.ceil(.5 * Math.sqrt(level) * Math.log(power) * (Math.random() * (1.15 - .85 + 1) + .85));
         this.power = power;
         this.hitPoints = level * 20 + 75;
     }
@@ -31,8 +9,7 @@ class Fighter {
         const damage = Math.ceil(.75 * Math.sqrt(this.level) * Math.log(this.power) * (Math.random() * (1.15 - .85 + 1) + .85));
         return damage
     }
-        
-    
+
     // Method which prints all of the stats for a character
     printStats() {
         console.log(`Stats for ${this.name} are as following:`);
@@ -62,10 +39,20 @@ class Fighter {
     }
 }
 
-function showdown(attackerCeleb, defenderCeleb) {
+function showdown() {
+    const showdownBtn = document.getElementById('showdown-btn');
+
     // Creates two unique characters using the "character" constructor
-    const attacker = new Fighter(attackerCeleb.name, attackerCeleb.power, attackerCeleb.level);
-    const defender = new Fighter(defenderCeleb.name, defenderCeleb.power, defenderCeleb.level);
+    const attacker = new Fighter(
+        showdownBtn.getAttribute('data-atk-name'), 
+        showdownBtn.getAttribute('data-atk-pwr'), 
+        showdownBtn.getAttribute('data-atk-lv')
+    );
+    const defender = new Fighter(
+        showdownBtn.getAttribute('data-def-name'), 
+        showdownBtn.getAttribute('data-def-pwr'), 
+        showdownBtn.getAttribute('data-def-lv')
+    );
 
     // This keeps track of whose turn it is
     let attackerTurn = true;
@@ -75,8 +62,6 @@ function showdown(attackerCeleb, defenderCeleb) {
 
     const attackerAvatar = document.getElementById('attacker');
     const defenderAvatar = document.getElementById('defender');
-
-
     const attackerHpBar = document.getElementById('attackerBar')
     const defenderHpBar = document.getElementById('defenderBar')
 
@@ -109,16 +94,45 @@ function showdown(attackerCeleb, defenderCeleb) {
             attackerHpBar.style.width = attackerLife + "%";
             console.log(attackerLife)
         }
-
         // Switch turns
         attackerTurn = !attackerTurn;
     }, 1500);
 }
 
+function setFighter(event) {
+    event.preventDefault();
+    const currentName = document.getElementById('attacker-name');
+    const currentImg = document.getElementById('attacker')
+    const currentLevel = document.getElementById('attacker-level');
+    const currentPower = document.getElementById('attacker-power');
+    const showdownBtn = document.getElementById('showdown-btn')
+
+    if (event.target.classList.contains('select-fighter')) {
+        const selectedFighter = {
+            id: event.target.getAttribute('data-id'),
+            name: event.target.getAttribute('data-name'),
+            power: event.target.getAttribute('data-power'),
+            fame_id: event.target.getAttribute('data-fame_id'),
+            level: event.target.getAttribute('data-level'),
+            xp: event.target.getAttribute('data-xp')
+        }
+        currentName.innerText = selectedFighter.name;
+        currentImg.setAttribute('src', `https://celebritybucks.com/images/celebs/full/${selectedFighter.fame_id}.jpg`);
+        currentLevel.innerText = 'Lv: ' + selectedFighter.level;
+        currentPower.innerText = 'Pwr: ' + selectedFighter.power;
+
+        showdownBtn.setAttribute('data-atk-name', selectedFighter.name);
+        showdownBtn.setAttribute('data-atk-id', selectedFighter.id);
+        showdownBtn.setAttribute('data-atk-pwr', selectedFighter.power);
+        showdownBtn.setAttribute('data-atk-lv', selectedFighter.level);
+    }   
+}
 
 document.getElementById('showdown-btn').addEventListener('click', function (event) {
-    event.preventDefault()
-    showdown({ name: "Dolly Parton", power: 200000, level: 6 }, { name: "Justin Bieber", power: 350000, level: 5 })
-        , false
+    event.preventDefault();
+    showdown(), false
 });
 
+document.querySelectorAll('.select-fighter').forEach(button => {
+    button.addEventListener('click', setFighter)
+})
