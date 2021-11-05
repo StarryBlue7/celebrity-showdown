@@ -6,7 +6,6 @@ function assignJustifyClass() {
     }
 }
 
-
 // Listen for window resize
 window
     .addEventListener('resize', assignJustifyClass)
