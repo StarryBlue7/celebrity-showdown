@@ -53,6 +53,7 @@ function showdown() {
     );
     attacker['id'] = parseInt(showdownBtn.getAttribute('data-atk-id'));
     attacker['XP'] = parseInt(showdownBtn.getAttribute('data-atk-xp'));
+    attacker['user_id'] = parseInt(showdownBtn.getAttribute('data-usr-id'));
 
     const defender = new Fighter(
         showdownBtn.getAttribute('data-def-name'), 
@@ -135,7 +136,7 @@ function showdown() {
             const randSound = defend % 3;
             fightSound[randSound].play();
             fightSound[randSound].volume = 0.3;
-            
+
             console.log(attackerLife)
         }
         // Switch turns
@@ -181,6 +182,22 @@ async function showdownResults(attacker, defender, isWin) {
         defender_id: defender.id,
         attacker_win: isWin
     }
+
+    // Increase user win count if showdown won
+    if (isWin) {
+        const addWin = await fetch('/api/users/' + attacker.user_id, {
+            method: 'PUT',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({isWin})
+        });
+
+        if (addWin.ok) {
+            console.log("User win added successfully")
+        } else {
+            console.log("Couldn't add user win");
+        }
+    }
+    
     const newShowdown = await fetch('/api/showdown', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
@@ -207,6 +224,9 @@ async function showdownResults(attacker, defender, isWin) {
 
     if (celebUpdate.ok) {
         console.log("Celebrity updated successfully")
+        // setTimeout(() => {
+        //     document.location.reload();
+        // }, 5000)
     } else {
         console.log("Couldn't update celebrity");
     }
