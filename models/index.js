@@ -21,10 +21,12 @@ Fame.hasMany(Celebrity, {
 
 Showdown.belongsTo(Celebrity, {
     foreignKey: "attacker_id",
+    onDelete: 'CASCADE'
 });
 
 Celebrity.hasMany(Showdown, {
     foreignKey: "attacker_id",
+    onDelete: 'CASCADE'
 });
 
 module.exports = {
