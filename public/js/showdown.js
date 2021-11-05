@@ -89,6 +89,7 @@ function showdown() {
     // Turn tracker
     let attackerTurn = true;
     startSound.play();
+    startSound.volume = 0.5;
 
     const turnInterval = setInterval(() => {
         // If either character is not alive, end the game
@@ -97,11 +98,13 @@ function showdown() {
         if (!attacker.isAlive()) {
             clearInterval(turnInterval);
             loseSound.play();
+            loseSound.volume = 0.5;
             showdownResults(attacker, defender, false);
             console.log(`${defender.name} wins!`);
         } else if (!defender.isAlive()) {
             clearInterval(turnInterval);
             winSound.play();
+            winSound.volume = 0.5;
             showdownResults(attacker, defender, true);
             console.log(`${attacker.name} wins!`);
         } else if (attackerTurn) {
@@ -110,7 +113,10 @@ function showdown() {
             attackerAvatar.classList.toggle("animate__wobble")
             const defenderLife = Math.floor(defender.currentHp() / defenderMaxHp * 100 )
             defenderHpBar.style.width = defenderLife + "%";
-            fightSound[attack % 3].play();
+            
+            const randSound = attack % 3;
+            fightSound[randSound].play();
+            fightSound[randSound].volume = 0.3;
             console.log(defenderLife)
         } else {
             const defend = defender.attack(attacker);
@@ -118,7 +124,10 @@ function showdown() {
             attackerAvatar.classList.toggle("animate__heartBeat")
             const attackerLife = Math.floor(attacker.currentHp() / attackerMaxHp * 100)
             attackerHpBar.style.width = attackerLife + "%";
-            fightSound[defend % 3].play();
+            
+            const randSound = defend % 3;
+            fightSound[randSound].play();
+            fightSound[randSound].volume = 0.3;
             console.log(attackerLife)
         }
         // Switch turns
